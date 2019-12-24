@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 
-class Time extends Component {
+class CurrentDate extends Component {
     date = new Date();
     state = {
+        year: this.date.getFullYear(),
+        month: this.date.getMonth() + 1,
+        day: this.date.getDate(),
         hour: this.date.getHours(),
         minute: this.date.getMinutes(),
         second: this.date.getSeconds()
@@ -23,7 +26,8 @@ class Time extends Component {
     render() {
         return (
             <div>
-                {this.state.hour}:{this.state.minute}:{this.state.second}
+                <div>{this.state.hour}:{this.state.minute}:{this.state.second}</div>
+                <div>{this.state.year}.{this.state.month}.{this.state.day}</div>
             </div>
         )
     }
@@ -32,7 +36,7 @@ class Time extends Component {
 function App() {
     return (
         <div className="App">
-            <Time/>
+            <CurrentDate/>
         </div>
     );
 }
