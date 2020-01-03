@@ -1,0 +1,41 @@
+body {
+    font-size: 1rem;
+}
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+.panel {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    justify-content: center;
+    margin: 1rem auto;
+    width: 14rem;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.panel-switch-text {
+    font-size: 2rem;
+    padding: 0.5rem;
+    color: #333;
+}
