@@ -26,7 +26,7 @@ const DisplayDate = styled.div`
   font-weight: 300;
 `;
 
-class CurrentDate extends Component {
+class App extends Component {
     date = new Date();
     state = {
         year: this.date.getFullYear(),
@@ -34,13 +34,13 @@ class CurrentDate extends Component {
         day: this.date.getDate(),
         hour: this.date.getHours(),
         minute: this.date.getMinutes(),
-        second: this.date.getSeconds()
+        second: this.date.getSeconds(),
+        showDate: false,
     };
 
     componentDidMount() {
         setInterval(() => {
             this.date = new Date();
-
             this.setState({
                 hour: this.date.getHours(),
                 minute: this.date.getMinutes(),
@@ -49,23 +49,27 @@ class CurrentDate extends Component {
         }, 1000);
     }
 
+    handleDate = (e) => {
+        const {checked} = e.target;
+        this.setState({
+           showDate: checked
+        });
+        console.log(checked);
+    };
+
     render() {
         return (
-            <Display>
-                <DisplayTime>{this.state.hour}:{this.state.minute}:{this.state.second}</DisplayTime>
-                <DisplayDate>{this.state.year}.{this.state.month}.{this.state.day}</DisplayDate>
-            </Display>
+            <div className="App">
+                <Switch
+                    handleDate={this.handleDate}
+                />
+                <Display>
+                    <DisplayTime>{this.state.hour}:{this.state.minute}:{this.state.second}</DisplayTime>
+                    {this.state.showDate ? <DisplayDate>{this.state.year}.{this.state.month}.{this.state.day}</DisplayDate> : false}
+                </Display>
+            </div>
         )
     }
-}
-
-function App() {
-    return (
-        <div className="App">
-            <Switch/>
-            <CurrentDate/>
-        </div>
-    );
 }
 
 export default App;

@@ -30,6 +30,10 @@ label {
     border-radius: 50%;
 }
 
+input:checked + .slider {
+    background-color: #61DAFB;
+}
+
 input:checked + .slider:before {
     transform: translateX(26px);
 }

@@ -24,10 +24,9 @@ const Slider = styled.span`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #61DAFB;
+    background-color: #ccc;
     transition: .4s;
     border-radius: 34px;
-    box-sizing: border-box;
 `;
 
 class Switch extends React.Component {
@@ -35,7 +34,7 @@ class Switch extends React.Component {
         return (
             <div className="panel">
                 <Label id="date-switch" className="switch">
-                    <Checkbox type="checkbox" value="on"/>
+                    <Checkbox type="checkbox" onChange={this.props.handleDate}/>
                     <Slider className="slider round"/>
                 </Label>
                 <label className="panel-switch-text" htmlFor="date-switch">
