@@ -29,9 +29,7 @@ const DisplayDate = styled.div`
 class App extends Component {
     date = new Date();
     state = {
-        year: this.date.getFullYear(),
-        month: this.date.getMonth() + 1,
-        day: this.date.getDate(),
+        day: this.date.toDateString(),
         hour: this.date.getHours(),
         minute: this.date.getMinutes(),
         second: this.date.getSeconds(),
@@ -42,6 +40,7 @@ class App extends Component {
         setInterval(() => {
             this.date = new Date();
             this.setState({
+                day: this.date.toDateString(),
                 hour: this.date.getHours(),
                 minute: this.date.getMinutes(),
                 second: this.date.getSeconds()
@@ -54,7 +53,6 @@ class App extends Component {
         this.setState({
            showDate: checked
         });
-        console.log(checked);
     };
 
     render() {
@@ -65,7 +63,7 @@ class App extends Component {
                 />
                 <Display>
                     <DisplayTime>{this.state.hour}:{this.state.minute}:{this.state.second}</DisplayTime>
-                    {this.state.showDate ? <DisplayDate>{this.state.year}.{this.state.month}.{this.state.day}</DisplayDate> : false}
+                    {this.state.showDate ? <DisplayDate>{this.state.day}</DisplayDate> : false}
                 </Display>
             </div>
         )
